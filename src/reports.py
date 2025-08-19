@@ -8,8 +8,9 @@ def send_report(cli_args):
     files = cli_args.file
 
     if report == 'average':
-        report_average(files)
-
+        print_report(*report_average(files))        
+    else:
+        print('Не выбран формат отчета')
 
 def report_average(files):
     result = defaultdict(list)
@@ -23,5 +24,10 @@ def report_average(files):
     for url, resp_time in sorted(result.items(), key=lambda x: -len(x[1])):
         res_list.append([url, len(resp_time),  round(sum(resp_time) / len(resp_time), 3)])
 
-    print(tabulate(res_list, headers=['handler', 'total', 'avg_response_time']))
+    headers=['handler', 'total', 'avg_response_time']
 
+    return (res_list, headers)
+
+
+def print_report(res_list, headers):
+    print(tabulate(res_list, headers=headers))

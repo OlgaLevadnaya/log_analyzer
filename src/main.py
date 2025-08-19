@@ -1,6 +1,11 @@
-from configs import configure_parser
+import sys
+from pathlib import Path
 
-from reports import send_report
+parent_dir =  Path(__file__).parent.parent
+sys.path.append(str(parent_dir))
+
+from src.configs import configure_parser
+from src.reports import send_report
 
 
 def main():
@@ -11,4 +16,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
