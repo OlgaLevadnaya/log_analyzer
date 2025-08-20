@@ -8,3 +8,4 @@ def test_main_import():
     except ImportError:
         assert False, 'Убедитесь что в директории `src` есть файл `main.py`'
 
+
