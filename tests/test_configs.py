@@ -5,9 +5,16 @@ import pytest
 try:
     from src import configs as configs
 except ModuleNotFoundError:
-    assert False, 'Убедитесь что в директории `src` есть файл `configs.py`'
+    assert False, 'В директории `src` отсутствует файл `configs.py`'
 except ImportError:
-    assert False, 'Убедитесь что в директории `src` есть файл `configs.py`'
+    assert False, 'В директории `src` отсутствует файл `configs.py`'
+
+
+def test_configs_file():
+    assert hasattr(configs, 'configure_parser'), (
+        'Отсутствует функция `configure_parser` в модуле `configs.py`.'
+    )
+
 
 @pytest.mark.parametrize('action, option_string, dest, choices', [
     (
