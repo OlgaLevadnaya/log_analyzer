@@ -1,7 +1,6 @@
 import argparse
 import json
 from collections import defaultdict
-from typing import Tuple
 
 from tabulate import tabulate
 
@@ -31,7 +30,7 @@ def create_data(files: list) -> dict:
     return result
 
 
-def create_report_average(result: dict) -> Tuple[list, list]:
+def create_report_average(result: dict) -> tuple[list, list]:
     """Считает среднее время ответа для каждого URL."""
     res_list = []
     for url, resp_time in sorted(result.items(), key=lambda x: -len(x[1])):
